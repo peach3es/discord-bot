@@ -1,15 +1,32 @@
-import discord #discord package
-from discord.ui import button
+import discord 
+#from discord.ui import button
 from discord.ext  import commands
-client = discord.Client() #client
+# client = discord.Client() #client
 
-@client.event
+TOKEN = "OTgwMTQ2NTEyODc5MzE3MDIy.GZfrmU.iI40W1SagHrEiO0T-aijZT_rF3Mgcn35vL0ZW0"
+
+bot = commands.Bot(command_prefix = '_')
+
+@bot.event
 async def on_ready():
-#bot's content
-  testing_channel = client.get_channel(980145563326644255)
+  testing_channel = bot.get_channel(980145563326644255)
+  await testing_channel.send("I'm turned on ;P")
 
-  await testing_channel.send("You turned me on ;P")
+@bot.command(pass_context = True)
+async def play(ctx):
+#bot's content
+  myembed = discord.Embed(
+    title="Game List", 
+    colour=discord.Colour(0xbc708f), 
+    url="https://discordapp.com", 
+    description="Select the game you would like to play:")
+
+  myembed.set_author(name="#play", url="https://discordapp.com")
+  myembed.set_footer(text="#play")
+  myembed.add_field(name="Tic Tac Toe", value="A classic game of tic tac toe to play with your friends (1 vs 1) ```#play tictactoe @mention```")
+
+  await ctx.send(embed=myembed)
 #Run client on server
-client.run('OTgwMTQ2NTEyODc5MzE3MDIy.GZfrmU.iI40W1SagHrEiO0T-aijZT_rF3Mgcn35vL0ZW0')
+bot.run(TOKEN)
 
 
