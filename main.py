@@ -22,20 +22,20 @@ async def on_message(msg):
   await bot.process_commands(msg)
 
 @bot.command()
-async def gamelist(bot):
+async def gamelist(ctx):
   myembed = discord.Embed(
     title="Game List", 
     colour=discord.Colour(0xbc708f),
     description="Select the game you would like to play:")
 
-  myembed.set_author(name="#play", url="https://discordapp.com")
+  myembed.set_author(name="#play")
   myembed.set_footer(text="#play")
   myembed.add_field(name="Tic Tac Toe", value="A classic game of tic tac toe to play with your "
                                               "friends (1 vs 1) ```#play tictactoe @mention```")
   
-  await bot.reply(embed = myembed)
+  await ctx.reply(embed = myembed)
 
-async def help(bot):
+async def help():
   helpembed = discord.Embed(
     title = "Help Commands",
     colour = discord.Colour(0xbc708f),
@@ -47,7 +47,7 @@ async def help(bot):
   helpembed.add_field(name="Game List", value="`#gamelist`", inline=True)
   helpembed.add_field(name="Help", value="`#help`", inline=True)
   helpembed.add_field(name="Help", value="`#help`", inline=True)
-  
+
   await bot.say(embed = helpembed)
 
 bot.run(discord_token)
