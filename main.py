@@ -17,8 +17,7 @@ async def play(ctx):
 #bot's content
   myembed = discord.Embed(
     title="Game List", 
-    colour=discord.Colour(0xbc708f), 
-    url="https://discordapp.com", 
+    colour=discord.Colour(0xbc708f),
     description="Select the game you would like to play:")
 
   myembed.set_author(name="#play", url="https://discordapp.com")
