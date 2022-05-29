@@ -1,7 +1,12 @@
 import discord 
+import os
+from dotenv import load_dotenv
 from discord.ext import commands
 
-TOKEN = "OTgwMTQ2NTEyODc5MzE3MDIy.GZfrmU.iI40W1SagHrEiO0T-aijZT_rF3Mgcn35vL0ZW0"
+load_dotenv()
+discord_token = os.getenv("TOKEN")
+
+bot = discord.Client()
 
 bot = commands.Bot(command_prefix = "#")
 
@@ -30,6 +35,6 @@ async def game(ctx):
   
   await ctx.reply(embed = myembed)
 
-bot.run(TOKEN)
+bot.run(discord_token)
 
 
