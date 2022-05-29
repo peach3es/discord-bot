@@ -1,11 +1,9 @@
 import discord 
-from discord.ext  import commands
+from discord.ext import commands
 
 TOKEN = "OTgwMTQ2NTEyODc5MzE3MDIy.GZfrmU.iI40W1SagHrEiO0T-aijZT_rF3Mgcn35vL0ZW0"
 
-intents = discord.Intents.default()
-intents.members = True
-bot = commands.Bot(command_prefix = "#", intents = intents)
+bot = commands.Bot(command_prefix = "#")
 
 @bot.event
 async def on_ready():
@@ -13,8 +11,9 @@ async def on_ready():
 
 @bot.event
 async def on_message(msg):
-  if msg.author.id == bot.user.id:
+  if msg.author == bot.user:
     return
+  print("mails")
   await bot.process_commands(msg)
 
 @bot.command()
