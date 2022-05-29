@@ -22,7 +22,7 @@ async def on_message(msg):
   await bot.process_commands(msg)
 
 @bot.command()
-async def game(ctx):
+async def gamelist(bot):
   myembed = discord.Embed(
     title="Game List", 
     colour=discord.Colour(0xbc708f),
@@ -33,7 +33,22 @@ async def game(ctx):
   myembed.add_field(name="Tic Tac Toe", value="A classic game of tic tac toe to play with your "
                                               "friends (1 vs 1) ```#play tictactoe @mention```")
   
-  await ctx.reply(embed = myembed)
+  await bot.reply(embed = myembed)
+
+async def help(bot):
+  helpembed = discord.Embed(
+    title = "Help Commands",
+    colour = discord.Colour(0xbc708f),
+    description = "All available commands for this bot:"
+  )
+  
+  helpembed.set_author(name = "#help")
+  helpembed.set_footer(text = "#play")
+  helpembed.add_field(name="Game List", value="`#gamelist`", inline=True)
+  helpembed.add_field(name="Help", value="`#help`", inline=True)
+  helpembed.add_field(name="Help", value="`#help`", inline=True)
+  
+  await bot.say(embed = helpembed)
 
 bot.run(discord_token)
 
