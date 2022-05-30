@@ -6,22 +6,27 @@ from discord.ext import commands
 load_dotenv()
 discord_token = os.getenv("TOKEN")
 
-bot = discord.Client()
+intents = discord.Intents.default()
+intents.members = True
 
-bot = commands.Bot(command_prefix = "#")
+bot = commands.Bot(
+  command_prefix = '#',
+  help_command = commands.DefaultHelpCommand(no_category="#play commands"),
+  intents = intents
+)
 
 @bot.event
 async def on_ready():
   print("The bot is ready")
 
 @bot.event
-async def on_message(msg):
-  if msg.author == bot.user:
+async def on_message(message):
+  if message.author == bot.user:
     return
-  print("mails")
-  await bot.process_commands(msg)
+  await bot.process_commands(message)
 
 @bot.command(
+  help = "Shows the user the bot's list of games",
   name = "gamelist",
   aliases = ["game", "g", "Gamelist", "game list", "list", "play"]
 )
@@ -33,28 +38,27 @@ async def gamelist(ctx):
 
   myembed.set_author(name="#play")
   myembed.set_footer(text="#play")
-  myembed.add_field(name="Tic Tac Toe", value="A classic game of tic tac toe to play with your "
-                                              "friends (1 vs 1) ```#play tictactoe @mention```")
+  myembed.add_field(name="Tic Tac Toe", value="A classic game of tic tac toe to play with your friends (1 vs 1) \nTo play, type: ```#play tictactoe @mention```")
   
-  await ctx.reply(embed = myembed)
+  await ctx.channel.send(embed = myembed)
   
-@bot.command(
-  name = "help",
-  aliases = ["HELP", "Help"]
-)
-async def help():
-  helpembed = discord.Embed(
-    title = "Help Commands",
-    colour = discord.Colour(0xbc708f),
-    description = "All available commands for this bot:")
+# @bot.command(
+#   name = "help",
+#   aliases = ["HELP", "Help"]
+# )
+# async def help():
+#   helpembed = discord.Embed(
+#     title = "Help Commands",
+#     colour = discord.Colour(0xbc708f),
+#     description = "All available commands for this bot:")
   
-  helpembed.set_author(name = "#help")
-  helpembed.set_footer(text = "#play")
-  helpembed.add_field(name="Game List", value="`#gamelist`", inline=True)
-  helpembed.add_field(name="Help", value="`#help`", inline=True)
-  helpembed.add_field(name="Help", value="`#help`", inline=True)
+#   helpembed.set_author(name = "#help")
+#   helpembed.set_footer(text = "#play")
+#   helpembed.add_field(name="Game List", value="`#gamelist`", inline=True)
+#   helpembed.add_field(name="Help", value="`#help`", inline=True)
+#   helpembed.add_field(name="Help", value="`#help`", inline=True)
 
-  await bot.say(embed = helpembed)
+#   await bot.say(embed = helpembed)
 
 bot.run(discord_token)
 
