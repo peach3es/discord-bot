@@ -21,7 +21,10 @@ async def on_message(msg):
   print("mails")
   await bot.process_commands(msg)
 
-@bot.command()
+@bot.command(
+  name = "gamelist",
+  aliases = ["game", "g", "Gamelist", "game list", "list"]
+)
 async def gamelist(ctx):
   myembed = discord.Embed(
     title="Game List", 
@@ -34,13 +37,16 @@ async def gamelist(ctx):
                                               "friends (1 vs 1) ```#play tictactoe @mention```")
   
   await ctx.reply(embed = myembed)
-
+  
+@bot.command(
+  name = "help",
+  aliases = ["HELP", "Help"]
+)
 async def help():
   helpembed = discord.Embed(
     title = "Help Commands",
     colour = discord.Colour(0xbc708f),
-    description = "All available commands for this bot:"
-  )
+    description = "All available commands for this bot:")
   
   helpembed.set_author(name = "#help")
   helpembed.set_footer(text = "#play")
