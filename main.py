@@ -23,6 +23,16 @@ async def on_ready():
 async def on_message(message):
   if message.author == bot.user:
     return
+  # if message.content.startswith("#gamelist"):
+  #   myembed = discord.Embed(
+  #   title="Game List", 
+  #   colour=discord.Colour(0xbc708f),
+  #   description="Select the game you would like to play:")
+
+  #   myembed.set_author(name="#play")
+  #   myembed.set_footer(text="#play")
+  #   myembed.add_field(name="Tic Tac Toe", value="A classic game of tic tac toe to play with your friends (1 vs 1) \nTo play, type: ```#play tictactoe @mention```")
+  #   await message.channel.send(embed = myembed)
   await bot.process_commands(message)
 
 @bot.command(
