@@ -23,7 +23,7 @@ async def on_message(msg):
 
 @bot.command(
   name = "gamelist",
-  aliases = ["game", "g", "Gamelist", "game list", "list"]
+  aliases = ["game", "g", "Gamelist", "game list", "list", "play"]
 )
 async def gamelist(ctx):
   myembed = discord.Embed(
