@@ -84,5 +84,3 @@ async def leaderboard(ctx):
   await ctx.channel.send(embed = Lembed)
 
 bot.run(discord_token)
-
-
