@@ -58,7 +58,7 @@ async def help(ctx):
   helpembed.set_footer(text = "1V1")
   helpembed.add_field(name="Game List", value="`#gamelist\n\naliases:\n - #g\n - #game\n - #play`", inline=True)
   helpembed.add_field(name="Help", value="`#help`", inline=True)
-  helpembed.add_field(name="Leaderboard", value="`#leaderboard`\n\n aliases:\n - #score", inline=True)
+  helpembed.add_field(name="Leaderboard", value="`#leaderboard`\n\n aliases:\n - #score`", inline=True)
 
   await ctx.channel.send(embed = helpembed)
 
