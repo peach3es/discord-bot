@@ -40,7 +40,7 @@ async def gamelist(ctx):
 
   #myembed.set_author(name = "1V1")
   myembed.set_footer(text="1V1")
-  myembed.add_field(name="Tic Tac Toe", value="A classic game of tic tac toe to play with your friends (1 vs 1) \nTo play, type: ```#play tictactoe @mention```")
+  myembed.add_field(name="Tic Tac Toe", value="A classic game of tic tac toe to play with your friends (1 vs 1) \nTo play, type: ```#tictactoe @mention```")
   
   await ctx.channel.send(embed = myembed)
   
@@ -58,7 +58,7 @@ async def help(ctx):
   helpembed.set_footer(text = "1V1")
   helpembed.add_field(name="Game List", value="`#gamelist\n\naliases:\n - #g\n - #game\n - #play`", inline=True)
   helpembed.add_field(name="Help", value="`#help`", inline=True)
-  helpembed.add_field(name="Leaderboard", value="`#leaderboard`\n\n aliases:\n - #score`", inline=True)
+  helpembed.add_field(name="Leaderboard", value="`#leaderboard`\n\n aliases:\n - #score", inline=True)
 
   await ctx.channel.send(embed = helpembed)
 
@@ -83,8 +83,22 @@ async def leaderboard(ctx):
 
   await ctx.channel.send(embed = Lembed)
 
+
 # @bot.command(
 #   name = "tictactoe",
 # )
 
+@bot.command(
+  name = "connect4",
+  aliases = ["con4", "c4"],
+  help = "This command allows user to play a game of connect 4"
+)
+async def connect(ctx):
+  Cembed = discord.Embed(
+    title = "Connect 4",
+    colour = discord.Colour(0xbc708f)
+  )
+
+  await ctx.channel.send (embed = Cembed)
+  
 bot.run(discord_token)
