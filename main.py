@@ -71,15 +71,15 @@ async def leaderboard(ctx):
   Lembed = discord.Embed(
     title = "Leaderboard",
     colour = discord.Colour(0xbc708f) 
-  )
+  )   
 
   #Lembed.set_author(name = "1V1")
   Lembed.set_footer(text = "1V1")
-  Lembed.add_field(name = "1. ")
-  Lembed.add_field(name = "2. ")
-  Lembed.add_field(name = "3. ")
-  Lembed.add_field(name = "4. ")
-  Lembed.add_field(name = "5. ")
+  Lembed.add_field(name = "First place 🥇 : ", value = "peaches", inline = False)
+  Lembed.add_field(name = "Second place 🥈 : ", value = "bongesquab quarespants", inline = False)
+  Lembed.add_field(name = "Third place 🥉 : ", value = "-", inline = False)
+  Lembed.add_field(name = "Fourth place: ", value = "-", inline = False)
+  Lembed.add_field(name = "Fifth place: ", value = "-", inline = False)
 
   await ctx.channel.send(embed = Lembed)
 
