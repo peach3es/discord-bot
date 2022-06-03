@@ -38,7 +38,7 @@ async def gamelist(ctx):
     colour=discord.Colour(0xbc708f),
     description="Select the game you would like to play:")
 
-  myembed.set_author(name = "1V1")
+  #myembed.set_author(name = "1V1")
   myembed.set_footer(text="1V1")
   myembed.add_field(name="Tic Tac Toe", value="A classic game of tic tac toe to play with your friends (1 vs 1) \nTo play, type: ```#play tictactoe @mention```")
   
@@ -54,7 +54,7 @@ async def help(ctx):
     colour = discord.Colour(0xbc708f),
     description = "All available commands for this bot:")
   
-  helpembed.set_author(name = "1V1")
+  #helpembed.set_author(name = "1V1")
   helpembed.set_footer(text = "1V1")
   helpembed.add_field(name="Game List", value="`#gamelist\n\naliases:\n - #g\n - #game\n - #play`", inline=True)
   helpembed.add_field(name="Help", value="`#help`", inline=True)
@@ -73,7 +73,7 @@ async def leaderboard(ctx):
     colour = discord.Colour(0xbc708f) 
   )
 
-  Lembed.set_author(name = "1V1")
+  #Lembed.set_author(name = "1V1")
   Lembed.set_footer(text = "1V1")
   Lembed.add_field(name = "1. ")
   Lembed.add_field(name = "2. ")
@@ -82,5 +82,9 @@ async def leaderboard(ctx):
   Lembed.add_field(name = "5. ")
 
   await ctx.channel.send(embed = Lembed)
+
+# @bot.command(
+#   name = "tictactoe",
+# )
 
 bot.run(discord_token)
