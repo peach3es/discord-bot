@@ -16,9 +16,9 @@ bot = commands.Bot(
   intents = intents
 )
 
-@bot.event
-async def on_ready():
-  print("The bot is ready")
+# @bot.event
+# async def on_ready():
+#   print("The bot is ready")
 
 @bot.event
 async def on_message(message):
@@ -27,22 +27,34 @@ async def on_message(message):
   print("mails")
   await bot.process_commands(message)
 
-@bot.command(
-  help = "Shows the user the bot's list of games",
-  name = "gamelist",
-  aliases = ["game", "g", "Gamelist", "game list", "list", "play"]
-)
-async def gamelist(ctx):
-  myembed = discord.Embed(
-    title="Game List", 
-    colour=discord.Colour(0xbc708f),
-    description="Select the game you would like to play:")
+@bot.command()
+async def load(ctx, extension):
+  bot.load_extension(f'modules.{extension}')
 
-  #myembed.set_author(name = "1V1")
-  myembed.set_footer(text="1V1")
-  myembed.add_field(name="Tic Tac Toe", value="A classic game of tic tac toe to play with your friends (1 vs 1) \nTo play, type: ```#tictactoe @mention```")
+@bot.command()
+async def unload(ctx, extension):
+  bot.unload_extension(f'modules.{extension}')
+
+for filename in os.listdir('./modules'):
+  if filename.endswith('.py'):
+    bot.load_extension(f'modules.{filename[:-3]}')
+
+# @bot.command(
+#   help = "Shows the user the bot's list of games",
+#   name = "gamelist",
+#   aliases = ["game", "g", "Gamelist", "game list", "list", "play"]
+# )
+# async def gamelist(ctx):
+#   myembed = discord.Embed(
+#     title="Game List", 
+#     colour=discord.Colour(0xbc708f),
+#     description="**Select the game you would like to play:**")
+
+#   #myembed.set_author(name = "1V1")
+#   myembed.set_footer(text="1V1")
+#   myembed.add_field(name="Tic Tac Toe", value="A classic game of tic tac toe to play with your friends (1 vs 1) \nTo play, type: ```#tictactoe @mention```")
   
-  await ctx.channel.send(embed = myembed)
+#   await ctx.channel.send(embed = myembed)
   
 @bot.command(
   name = "help",
@@ -86,6 +98,10 @@ async def leaderboard(ctx):
 
 # @bot.command(
 #   name = "tictactoe",
+
+# duel system here
+
+#tictactoe code here
 # )
 
 @bot.command(

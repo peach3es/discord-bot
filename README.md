@@ -1,6 +1,6 @@
 # discord-bot
 
-Our dicord bot provides small game experiences to users within our server, and is the first discord bot project we're creating.
+1V1 is a discord bot that provides small game experiences to users within our server, and is the first discord bot project we're creating.
 
 The games we'd like to implement include:
 - tic tac toe
