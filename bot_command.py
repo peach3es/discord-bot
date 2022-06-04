@@ -43,7 +43,6 @@ class reg_commmands(commands.Cog):
     @commands.command(
         name = "help",
         aliases = ["HELP", "Help"],
-        help = "Show's user the help menu"
         )
     async def help(self, ctx):
         helpembed = discord.Embed(
@@ -59,6 +58,18 @@ class reg_commmands(commands.Cog):
         helpembed.add_field(name="Leaderboard", value="`#leaderboard`", inline=True)
 
         await ctx.channel.send(embed = helpembed)
+
+        @commands.command(
+            name = "help"
+        )
+        async def _help(self, ctx):
+            hembed = discord.Embed(
+                title = "#help",
+                colour = discord.Colour(0xbc708f),
+                description = "Shows the help menu"
+            )
+            hembed.set_footer(text = "🏆 1V1")
+            await ctx.channel.send(embed = hembed)
 
     @commands.command(  
         name = "leaderboard",
