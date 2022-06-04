@@ -69,6 +69,7 @@ class reg_commmands(commands.Cog):
             description = "Shows the help menu"
         )
         hembed.set_footer(text = "🏆 1V1")
+        hembed.add_field(name = "Aliases", value = "`#HELP`, `#Help`")
         await ctx.channel.send(embed = hembed)
         
     @help.command(
@@ -81,6 +82,7 @@ class reg_commmands(commands.Cog):
             description = "Shows the list of available games menu"
         )
         gembed.set_footer(text = "🏆 1V1")
+        gembed.add_field(name = "Aliases", value = "`#g`, `#game`, `list`")
         await ctx.channel.send(embed = gembed)
 
     @help.command(
@@ -93,6 +95,7 @@ class reg_commmands(commands.Cog):
             description = "Shows the top 5 placement in the server"
         )
         lembed.set_footer(text = "🏆 1V1")
+        lembed.add_field(name = "Aliases", value = "`#rank`, `#placement`")
         await ctx.channel.send(embed = lembed)        
 
     @commands.command(  
@@ -102,7 +105,8 @@ class reg_commmands(commands.Cog):
     async def leaderboard(self, ctx):
         Lembed = discord.Embed(
             title = "Leaderboard",
-            colour = discord.Colour(0xbc708f) 
+            colour = discord.Colour(0xbc708f), 
+            aliases = ["rank", "placement"]
         )   
 
         #Lembed.set_author(name = "1V1")
