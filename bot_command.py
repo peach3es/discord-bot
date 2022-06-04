@@ -100,13 +100,12 @@ class reg_commmands(commands.Cog):
 
     @commands.command(  
         name = "leaderboard",
-        aliases = ["score"],
+        aliases = ["score", "rank", "placement"],
         )
     async def leaderboard(self, ctx):
         Lembed = discord.Embed(
             title = "Leaderboard",
-            colour = discord.Colour(0xbc708f), 
-            aliases = ["rank", "placement"]
+            colour = discord.Colour(0xbc708f)
         )   
 
         #Lembed.set_author(name = "1V1")
