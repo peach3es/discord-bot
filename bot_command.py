@@ -40,9 +40,10 @@ class reg_commmands(commands.Cog):
         
         await ctx.channel.send(embed = myembed)
 
-    @commands.command(
+    @commands.group(
         name = "help",
         aliases = ["HELP", "Help"],
+        invoke_without_command = True
         )
     async def help(self, ctx):
         helpembed = discord.Embed(
@@ -59,17 +60,17 @@ class reg_commmands(commands.Cog):
 
         await ctx.channel.send(embed = helpembed)
 
-        @commands.command(
-            name = "help"
+    @help.command(
+        name = "help"
+    )
+    async def _help(self, ctx):
+        hembed = discord.Embed(
+            title = "#help",
+            colour = discord.Colour(0xbc708f),
+            description = "Shows the help menu"
         )
-        async def _help(self, ctx):
-            hembed = discord.Embed(
-                title = "#help",
-                colour = discord.Colour(0xbc708f),
-                description = "Shows the help menu"
-            )
-            hembed.set_footer(text = "🏆 1V1")
-            await ctx.channel.send(embed = hembed)
+        hembed.set_footer(text = "🏆 1V1")
+        await ctx.channel.send(embed = hembed)
 
     @commands.command(  
         name = "leaderboard",
