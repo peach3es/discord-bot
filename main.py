@@ -17,6 +17,7 @@ bot = commands.Bot(
   # help_command = commands.DefaultHelpCommand(no_category="#play commands"),
   intents = intents
 )
+
 bot.add_cog(reg_commmands(bot)) #calls bot commands from another file
 
 
