@@ -20,7 +20,6 @@ class reg_commmands(commands.Cog):
     #   await self.process_commands(message)
 
     @commands.command(
-        help = "Shows the user the list of available games",
         name = "gamelist",
         aliases = ["game", "g", "Gamelist", "game list", "list", "play"]
         )
@@ -49,7 +48,7 @@ class reg_commmands(commands.Cog):
         helpembed = discord.Embed(
             title = "Help Commands",
             colour = discord.Colour(0xbc708f),
-            description = "All available commands for this bot:"
+            description = "Use `#help <command>` for more info"
             )
         
         #helpembed.set_author(name = "1V1")
@@ -71,11 +70,34 @@ class reg_commmands(commands.Cog):
         )
         hembed.set_footer(text = "🏆 1V1")
         await ctx.channel.send(embed = hembed)
+        
+    @help.command(
+            name = "gamelist"
+        )
+    async def _gamelist(self, ctx):
+        gembed = discord.Embed(
+            title = "#gamelist",
+            colour = discord.Colour(0xbc708f),
+            description = "Shows the list of available games menu"
+        )
+        gembed.set_footer(text = "🏆 1V1")
+        await ctx.channel.send(embed = gembed)
+
+    @help.command(
+            name = "leaderboard"
+        )
+    async def _leaderboard(self, ctx):
+        lembed = discord.Embed(
+            title = "#leaderboard",
+            colour = discord.Colour(0xbc708f),
+            description = "Shows the top 5 placement in the server"
+        )
+        lembed.set_footer(text = "🏆 1V1")
+        await ctx.channel.send(embed = lembed)        
 
     @commands.command(  
         name = "leaderboard",
         aliases = ["score"],
-        help = "Show user the top 5 placement in the server"
         )
     async def leaderboard(self, ctx):
         Lembed = discord.Embed(
