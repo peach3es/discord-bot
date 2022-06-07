@@ -3,7 +3,8 @@ import os
 from dotenv import load_dotenv
 from discord.ext import commands
 
-from bot_command import reg_commmands #imports bot commands from bot_command.py
+from bot_command import reg_commmands
+from tictactoe import tictactoe
 
 load_dotenv()
 discord_token = os.getenv("TOKEN")
@@ -18,8 +19,10 @@ bot = commands.Bot(
   intents = intents
 )
 bot.add_cog(reg_commmands(bot)) #calls bot commands from another file
+bot.add_cog(tictactoe(bot)) #calls bot commands + game code from tictactoe file
 
 
+#TO BE ADDED TO CONNECT4 FILE
 @bot.command(
   name = "connect4",
   aliases = ["con4", "c4"],
