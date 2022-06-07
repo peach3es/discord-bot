@@ -15,7 +15,7 @@ winning_conditions = [
     [2, 4, 6]
 ]  
 
-def checkWinner(self, winning_conditions, mark):
+def checkWinner(winning_conditions, mark):
         global gameOver
         for condition in winning_conditions:
             if board[condition[0]] == mark and board[condition[1]] == mark and board[condition[2]] == mark:
