@@ -1,5 +1,7 @@
+from tkinter import Label
 import discord
 from discord import activity
+from discord.ui import Button, View
 from discord.ext import commands
 
 class reg_commmands(commands.Cog):
@@ -100,7 +102,7 @@ class reg_commmands(commands.Cog):
 
     @commands.command(  
         name = "leaderboard",
-        aliases = ["score", "rank", "placement"],
+        aliases = ["score", "rank", "placement"]
         )
     async def leaderboard(self, ctx):
         Lembed = discord.Embed(
@@ -117,3 +119,16 @@ class reg_commmands(commands.Cog):
         Lembed.add_field(name = "Fifth place: ", value = "-", inline = False)
 
         await ctx.channel.send(embed = Lembed)
+    
+    @commands.command(
+        name = "duel",
+        aliases = ["fight"]
+    )
+    async def duel(self, ctx):
+        buttonAccept = Button(label = "Accept", style = discord.ButtonStyle.green, emoji = "⚔️")
+        buttonDecline = Button(label = "Decline", style = discord.ButtonStyle.danger, emoji = "🛡️")
+
+        view = View()
+        view.add_items(buttonAccept)
+        view.add_items(buttonDecline)
+        await ctx.channel.send("Would you like the accept the challenge?", view = view)
