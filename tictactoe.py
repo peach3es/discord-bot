@@ -90,7 +90,7 @@ class tictactoe (commands.Cog):
                 turn = player2
                 await ctx.send("<@" + str(player2.id) + "> starts!")
         else:
-            await ctx.send("A game is already started ya goof. Finish that one first please :)")
+            await ctx.send("A game is already started ya goof. Finish that one first please 😃")
     
     @commands.command(
         name = "place",
@@ -131,12 +131,12 @@ class tictactoe (commands.Cog):
                     #declare winner or tie
                     if gameOver:
                         if mark == player1:
-                            await ctx.send("<@" + str(player1.id) + "> wins! :tada:")
+                            await ctx.send("<@" + str(player1.id) + "> wins! 🎉") 
                         elif mark == player2:
-                            await ctx.send("<@" + str(player2.id) + "> wins! :tada:")
+                            await ctx.send("<@" + str(player2.id) + "> wins! 🎉")
                     elif count >= 9:
                         gameOver = True
-                        await ctx.send("It's a tie, ggwp :handshake:")
+                        await ctx.send("It's a tie, ggwp 🤝")
 
                     #change turns
                     if turn == player1:
@@ -149,7 +149,7 @@ class tictactoe (commands.Cog):
                 else:
                     await ctx.send("Please use a position from 1-9 designating an empty spot.")
             else:
-                await ctx.send("Dude, wait your turn :angry:")
+                await ctx.send("Dude, wait your turn 😡")
             
         else:
             await ctx.send("Start a game to place a piece, silly. Use ```#tictactoe @mention```.")
