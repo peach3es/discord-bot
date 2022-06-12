@@ -3,6 +3,11 @@ from discord.ext import commands
 from discord import activity
 import random
 
+player1 = ""
+player2 = ""
+turn = ""
+gameOver = True
+board = []
 
 winning_conditions = [
     [0, 1, 2],
@@ -16,38 +21,14 @@ winning_conditions = [
 ]  
 
 def checkWinner(winning_conditions, mark):
-        global gameOver
-        for condition in winning_conditions:
-            if board[condition[0]] == mark and board[condition[1]] == mark and board[condition[2]] == mark:
-                gameOver = True
+    for condition in winning_conditions:
+        if board[condition[0]] == mark and board[condition[1]] == mark and board[condition[2]] == mark:
+            return True     #gameOver is True if any winning combo is found
+    return False            #If not found, gameOver is false (game is still being played)
 
 class tictactoe (commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
-    player1 = ""
-    player2 = ""
-    turn = ""
-    gameOver = True
-
-    board = []
-
-    # winning_conditions = [
-    #     [0, 1, 2],
-    #     [3, 4, 5],
-    #     [6, 7, 8],
-    #     [0, 3, 6],
-    #     [1, 4, 7],
-    #     [2, 5, 8],
-    #     [0, 4, 8],
-    #     [2, 4, 6]
-    # ]    
-
-    # def checkWinner(self, winning_conditions, mark):
-    #     global gameOver
-    #     for condition in winning_conditions:
-    #         if board[condition[0]] == mark and board[condition[1]] == mark and board[condition[2]] == mark:
-    #             gameOver = True
 
     @commands.command(
         name = "tictactoe",
@@ -102,6 +83,7 @@ class tictactoe (commands.Cog):
         global turn
         global count
         global board
+        global gameOver
         global winning_conditions
 
         if not gameOver:
@@ -126,13 +108,13 @@ class tictactoe (commands.Cog):
                             line += " " + board[x]
                     
                     #function to check if someone won
-                    checkWinner(self, winning_conditions, mark)
+                    gameOver = checkWinner(winning_conditions, mark)
 
                     #declare winner or tie
                     if gameOver:
-                        if mark == player1:
+                        if turn == player1:
                             await ctx.send("<@" + str(player1.id) + "> wins! 🎉") 
-                        elif mark == player2:
+                        elif turn == player2:
                             await ctx.send("<@" + str(player2.id) + "> wins! 🎉")
                     elif count >= 9:
                         gameOver = True
@@ -149,10 +131,9 @@ class tictactoe (commands.Cog):
                 else:
                     await ctx.send("Please use a position from 1-9 designating an empty spot.")
             else:
-                await ctx.send("Dude, wait your turn 😡")
-            
+                await ctx.send("Dude, wait your turn 😡")    
         else:
-            await ctx.send("Start a game to place a piece, silly. Use ```#tictactoe @mention```.")
+            await ctx.send("Start a game to place a piece, silly. Use ```#tictactoe @player1 @player2```")
 
 # IMPLEMENT ERROR HANDLING!!!!!
 # @tictactoe.error()
