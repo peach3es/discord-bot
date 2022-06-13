@@ -135,5 +135,31 @@ class tictactoe (commands.Cog):
         else:
             await ctx.send("Start a game to place a piece, silly. Use ```#tictactoe @player2```")
 
+    @commands.command(
+        name = "gameoverttt",
+        aliases = ["endttt", "end"]
+    )
+    async def gameover(self, ctx):
+        global gameOver
+
+        if not gameOver:
+            gameOver = True
+            await ctx.send("Game ended.")
+        else:
+            await ctx.send("There is no tictactoe game to end.")
+            
+    
 # IMPLEMENT ERROR HANDLING!!!!!
-# @tictactoe.error()
+    @tictactoe.error
+    async def ttt_error(cog, ctx, error):
+        if isinstance(error, commands.MissingRequiredArgument):
+            await ctx.send("Please mention an existing player")
+        elif isinstance(error, commands.BadArgument):
+            await ctx.send("Don't forget the '@' to mention second player, like this: <@980146512879317022>")
+
+    @place.error
+    async def place_error(cog, ctx, error):
+        if isinstance(error, commands.MissingRequiredArgument):
+            await ctx.send("You forgot to input the location on the board (1-9)")
+        elif isinstance(error, commands.BadArgument):
+            await ctx.send("What am I supposed to do with a letter? Please put a number from 1-9")
