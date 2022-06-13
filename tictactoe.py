@@ -34,7 +34,7 @@ class tictactoe (commands.Cog):
         name = "tictactoe",
         aliases = ["ttt"]
     )
-    async def tictactoe(self, ctx, p1 : discord.Member, p2 : discord.Member):
+    async def tictactoe(self, ctx, p2 : discord.Member):
         global player1
         global player2
         global turn
@@ -50,7 +50,7 @@ class tictactoe (commands.Cog):
             gameOver = False
             count = 0
 
-            player1 = p1
+            player1 = ctx.author
             player2 = p2
 
             line = ""
@@ -133,7 +133,7 @@ class tictactoe (commands.Cog):
             else:
                 await ctx.send("Dude, wait your turn 😡")    
         else:
-            await ctx.send("Start a game to place a piece, silly. Use ```#tictactoe @player1 @player2```")
+            await ctx.send("Start a game to place a piece, silly. Use ```#tictactoe @player2```")
 
 # IMPLEMENT ERROR HANDLING!!!!!
 # @tictactoe.error()
