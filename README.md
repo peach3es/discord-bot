@@ -10,4 +10,4 @@ The games we'd like to implement include:
 
 We're using and learning more about discord.py, pycord and the python language along the way, as well as incrementally testing our design as we go.
 
--> peach3es & maxx
+-> peach3es, maxx & benedictatac
