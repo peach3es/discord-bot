@@ -1,6 +1,7 @@
 import discord 
 from discord.ext import commands
 from discord import activity
+from datetime import datetime
 import random
 
 player1 = ""
@@ -40,8 +41,16 @@ class tictactoe (commands.Cog):
         global turn
         global gameOver
         global count
- 
+
+        try:
+            if "<@" + str(p2.id) + ">" not in str(ctx): #CRINGE NEEDS TO BE CHANGED
+                raise Exception("Please use @ symbol to mention a user")
+        except Exception as e: 
+            await ctx.send(e)
+            return
+
         if gameOver:
+            #start timer
             global board
             board = ["⬜", "⬜", "⬜",
                      "⬜", "⬜", "⬜",
