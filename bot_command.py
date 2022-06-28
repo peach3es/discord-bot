@@ -3,7 +3,6 @@ import discord
 from discord import activity
 from discord.ui import Button, View
 from discord.ext import commands
-from discord_buttons_plugin import *
 
 class reg_commmands(commands.Cog):
 
