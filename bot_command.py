@@ -3,6 +3,7 @@ import discord
 from discord import activity
 from discord.ui import Button, View
 from discord.ext import commands
+from discord_buttons_plugin import *
 
 class reg_commmands(commands.Cog):
 
@@ -128,7 +129,13 @@ class reg_commmands(commands.Cog):
         buttonAccept = Button(label = "Accept", style = discord.ButtonStyle.green, emoji = "⚔️")
         buttonDecline = Button(label = "Decline", style = discord.ButtonStyle.danger, emoji = "🛡️")
 
+        Dembed = discord.Embed(
+            title = "⚔️ New Duel Challenge ⚔️",
+            colour = discord.Colour(0xbc708f),
+            description = ctx.author + " has challenged you to a duel, will you accept the challenge?"
+        )
+
         view = View()
         view.add_items(buttonAccept)
         view.add_items(buttonDecline)
-        await ctx.channel.send("Would you like the accept the challenge?", view = view)
+        await ctx.channel.send(embed = Dembed, view = view)
