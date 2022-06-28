@@ -1,7 +1,6 @@
 import discord 
 import os
 from dotenv import load_dotenv
-from discord.ui import Button
 from discord.ext import commands
 
 from bot_command import reg_commmands #imports bot commands from bot_command.py
