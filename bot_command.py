@@ -9,7 +9,7 @@ class reg_commmands(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        await self.bot.change_presence(activity = discord.Game("I'm gay"))
+        await self.bot.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = "your bs"))
         print("The bot is ready")
 
     # @commands.Cog.listener() <-- this part is broken
