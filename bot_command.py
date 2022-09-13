@@ -138,3 +138,11 @@ class reg_commmands(commands.Cog):
         view.add_items(buttonAccept)
         view.add_items(buttonDecline)
         await ctx.channel.send(embed = Dembed, view = view)
+
+    @commands.command(
+        name = "rps",
+        aliases = ["rockpaperscissors"]
+    )
+    async def rps(self, ctx):
+        #epheremal message that gives the user the option of choosing between rock, paper, or scissors and deltes the message after 10 seconds
+        await ctx.channel.send("Choose between rock, paper, or scissors", delete_after = 10)
