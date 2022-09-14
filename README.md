@@ -4,8 +4,8 @@
 
 The games we'd like to implement include:
 - tic tac toe
-- connect 4
 - rock paper scissors
+- connect 4
 - ...hopefully more ambitious games in the future
 
 We're using and learning more about discord.py, pycord and the python language along the way, as well as incrementally testing our design as we go.
